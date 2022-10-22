@@ -1,21 +1,17 @@
 import React from 'react';
-
+import {sortBy} from 'underscore'
 
 export default class LaunchTable extends React.Component {
     render() {
       const filterText = this.props.filterText;
       const orderByLatest = this.props.sortByLatestTime;
-      const launches = this.props.launches;
+      var launches = this.props.launches;
       const rows = [];
 
       if(orderByLatest){
-        launches.sort((a,b)=>{
-          return b.launch_date_local - a.launch_date_local;
-        })
+        launches = sortBy(launches, 'launch_date_local').reverse();
       }else{
-        launches.sort((a,b)=>{
-          return a.launch_date_local - b.launch_date_local;
-        })
+        launches = sortBy(launches, 'launch_date_local');
       }
 
 
