@@ -3,7 +3,7 @@ import {sortBy} from 'underscore'
 
 export default class LaunchTable extends React.Component {
     render() {
-      const filterText = this.props.filterText;
+      const filterText = this.props.filterText.toLowerCase();
       const orderByLatest = this.props.sortByLatestTime;
       var launches = this.props.launches;
       const rows = [];
@@ -16,8 +16,8 @@ export default class LaunchTable extends React.Component {
 
 
       launches.forEach((launch) => {
-        if (launch.mission_name.indexOf(filterText) === -1 && launch.rocket.rocket_name.indexOf(filterText) === -1
-        && launch.rocket.rocket_type.indexOf(filterText) === -1 ) {
+        if (launch.mission_name.toLowerCase().indexOf(filterText) === -1 && launch.rocket.rocket_name.toLowerCase().indexOf(filterText) === -1
+        && launch.rocket.rocket_type.toLowerCase().indexOf(filterText) === -1 ) {
           return;
         }
         rows.push(
