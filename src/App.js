@@ -2,7 +2,7 @@ import SearchBar from './Search.js';
 import React from 'react';
 import LaunchTable from './LaunchTable.js';
 import SortButton from './Sort';
-import {sortBy} from 'underscore'
+import { sortBy } from 'underscore'
 
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
       sortByAscendingRocketName: false,
       sortByAscendingRocketType: false
     };
-    
+
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
     this.handleSortByTime = this.handleSortByTime.bind(this);
     this.handleSortByMissionName = this.handleSortByMissionName.bind(this);
@@ -36,7 +36,7 @@ class App extends React.Component {
       launches: this.props.launches
     }));
 
-    if(this.state.sortByLatestTime){
+    if (this.state.sortByLatestTime) {
       this.setState({
         launches: sortBy(this.state.launches, ['launch_date_local']).reverse()
       })
@@ -53,7 +53,7 @@ class App extends React.Component {
       launches: this.props.launches
     }));
 
-    if(this.state.sortByAscendingMissionName){
+    if (this.state.sortByAscendingMissionName) {
       this.setState({
         launches: sortBy(this.state.launches, ['mission_name'])
       })
@@ -70,14 +70,14 @@ class App extends React.Component {
       launches: this.props.launches
     }));
 
-    if(this.state.sortByAscendingRocketName){
+    if (this.state.sortByAscendingRocketName) {
       this.setState({
-        launches: sortBy(this.state.launches, ['rocket.rocket_name'])
-      })
+        launches: sortBy(this.state.launches, (launch) => launch.rocket.rocket_name)
+      });
     } else {
       this.setState({
-        launches: sortBy(this.state.launches, ['rocket.rocket_name']).reverse()
-      })
+        launches: sortBy(this.state.launches, (launch) => launch.rocket.rocket_name).reverse()
+      });
     }
   };
 
@@ -87,14 +87,14 @@ class App extends React.Component {
       launches: this.props.launches
     }));
 
-    if(this.state.sortByAscendingRocketType){
+    if (this.state.sortByAscendingRocketType) {
       this.setState({
-        launches: sortBy(this.state.launches, ['rocket.rocket_type'])
-      })
+        launches: sortBy(this.state.launches, (launch) => launch.rocket.rocket_type)
+      });
     } else {
       this.setState({
-        launches: sortBy(this.state.launches, ['rocket.rocket_type']).reverse()
-      })
+        launches: sortBy(this.state.launches, (launch) => launch.rocket.rocket_type).reverse()
+      });
     }
   };
 
@@ -102,7 +102,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <SortButton 
+        <SortButton
           sortByLatestTime={this.state.sortByLatestTime}
           sortByAscendingMissionName={this.state.sortByAscendingMissionName}
           sortByAscendingRocketName={this.state.sortByAscendingRocketName}

@@ -10,19 +10,19 @@ export default class SortButton extends React.Component {
         this.handleRocketTypeOrderChange = this.handleRocketTypeOrderChange.bind(this);
     }
 
-    handleSortDateOrderChange (){
+    handleSortDateOrderChange() {
         this.props.onSortDateOrderChange();
     }
 
-    handleMissionNameOrderChange () {
+    handleMissionNameOrderChange() {
         this.props.onSortMissionNameChange();
     }
 
-    handleRocketNameOrderChange () {
+    handleRocketNameOrderChange() {
         this.props.onSortRocketNameChange();
     }
 
-    handleRocketTypeOrderChange () {
+    handleRocketTypeOrderChange() {
         this.props.onSortRocketTypeChange();
     }
 
